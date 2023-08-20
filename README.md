@@ -7,9 +7,7 @@
 --------------------
 
 ## Discription
-the system consist of a ball on a beam (or in a clear colored tube) and it will try to balanc the ball in a input distance .
-The system will also come with a LCD Tochscreen to play the role as a GUI for the user.
-This work is for educational perpose therefore this is a demonstartion of control theory (eg. PID closed loop vs Open Loop systems).
+The setup comprises of a ball positioned on a beam (or within a transparent colored tube). Its objective is to maintain balance at a specified distance. Additionally, the system includes an LCD touchscreen which serves as a user interface (GUI). It's important to note that this project is designed for educational purposes, specifically as a demonstration of control theory principles such as comparing PID closed-loop systems to open-loop systems.
 
 -----------------------------------
 
