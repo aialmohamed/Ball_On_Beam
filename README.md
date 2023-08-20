@@ -18,7 +18,7 @@
 
 ----------------------
 
-## Discription
+## Description
 The setup comprises of a ball positioned on a beam (or within a transparent colored tube). Its objective is to maintain balance at a specified distance. Additionally, the system includes an LCD touchscreen which serves as a user interface (GUI). It's important to note that this project is designed for educational purposes, specifically as a demonstration of control theory principles such as comparing PID closed-loop systems to open-loop systems.
 
 -----------------------------------
@@ -27,10 +27,10 @@ The setup comprises of a ball positioned on a beam (or within a transparent colo
 
 ### Hardware 
 
-1. Disrance Sensor 
-2. Steper Motor / Servo Motor
+1. Distance Sensor 
+2. Stepper Motor / Servo Motor
 3. Processor (Rasp pi 3)
-4. LCD Tochscreen 
+4. LCD Touchscreen 
 5. LED 
 
 ### Software
@@ -52,7 +52,7 @@ TBD
 
 
 -------------
-## Hardware Schimatic
+## Hardware Schematic
 
 
 -----------
