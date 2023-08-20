@@ -1,0 +1,92 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usetikzlibrary{positioning,patterns,calc,quotes,angles}
+
+\title{System Dynamics \\ Ball on a Beam}
+\author{Ahmed Ibrahim Almohamed \\ Abdullah Alhamad }
+\date{August 2023}
+
+
+\begin{document}
+
+
+\maketitle
+\section{Abstract}
+
+The Ball on Beam system is a classic example of control and dynamics problem that describes
+the interaction of a ball place on a horizontal beam.
+In this Study we will analyze the system into a mathematical model and a simulation.
+We are focusing on understanding the interactions between the ball's position ,the beam's angle
+and the external forces (e.g gravity).
+Through the application of principles from physics and control theory,
+we develop a mathematical model that describes the system's behavior.
+By employing simulation techniques, we explore how the system responds to different control inputs and external disturbances.
+Insights gained from this analysis contribute to a deeper understanding of the fundamental concepts of dynamics, control strategies, and stability in mechanical systems.
+This research not only enhances theoretical knowledge but also provides valuable insights for designing and controlling similar systems in various practical applications.
+
+\newpage
+\section{System description}
+The system comprises a ball placed on a beam that is tilted at an angle $\theta$.
+The beam possesses a length $l$ and is capable of rotating around a defined pivot point.
+The position of the ball on the beam is denoted by $x$, where $x = 0$ corresponds to the left end of the beam,
+and $x = l$ corresponds to the right end.
+The beam connects to a motor via a gear mechanism, where the distance from the motor's rotor to the gear arm is represented as $d$. The gear arrangement enables the motor to apply a torque to the beam, inducing its rotation about the pivot point.
+Additionally, the system involves the parameter $\phi$, which signifies the gear angle.
+This angle $\phi$ characterizes the orientation of the gear linked to the motor. As the motor rotates,
+the gear angle $\phi$ changes, influencing the torque exerted on the beam and consequently impacting its position and tilt angle $\theta$.
+The motion of the ball and the rotation of the beam are intricately linked through factors such as the motor's torque,
+the gear angle $\phi$, and the distance $d$ from the rotor to the gear arm.
+The system's dynamic behavior is governed by these interrelated variables,
+leading to diverse motion patterns and equilibrium conditions for the ball on the tilted beam.
+The comprehension and analysis of this system entail investigating the relationships among variables $l$, $x$, $d$, $\theta$, and $\phi$, as well as considering the influence of external forces like gravity and potential control inputs.
+Utilizing mathematical models and principles from mechanics enables the characterization and prediction of the system's behavior across various scenarios.
+
+
+\begin{figure}[h]
+	\centering
+	\begin{circuitikz}
+		%Beam 
+		\draw [fill = gray!40 ,rotate =30] (0,0) rectangle (10,0.5) node[xshift = 1.5cm] {\large Beam};
+		%Length of the Beam
+		\draw [<->|,rotate = 30] (0,2) --(10,2) node[midway,above] {\large l};
+
+		%Ball
+		\draw [thick, rotate = 30] (9,1) circle (0.5);
+		% Ball distance
+		\draw [<->|,rotate = 30] (0,1) -- (9,1) node [midway,above] {\large x};
+
+		% Angle line , arc, and name 
+		\draw [thick] (0,0) -- (10,0);
+		\draw[<->] [dashed] (2,0) arc (0:30:2) node[midway,right] {\large $\theta$};
+
+		% Gear
+		\draw [fill = red!40] (7.5,1) circle (1) node [xshift = 2cm, yshift = -1.5cm] {\large Gear};
+
+		% Gear Measurements 
+		\draw (7.5,1) -- (10,1);
+		\draw (7.5,1) --(9,2.5);
+		\draw [<->] [dashed] (9,1) arc (0:60:1) node[midway,right] {\large $\phi$};
+
+		% Motor Shaft
+		\draw [fill = blue!40] (8,1.5) rectangle (8.1,5);
+
+		% distance from center of Gear to Shaft
+
+		\draw (6,3) -- (8,1.5);
+		\draw (5,2.5) -- (7.5,1);
+		\draw [<->| ] (6,1.9) --(6.7,2.5) node[midway,above] {\large d};
+
+
+	\end{circuitikz}
+	% Caption
+	\caption{System Overview}
+\end{figure}
+
+\newpage
+\section{Mathematical model}
+
+
+\end{document}
