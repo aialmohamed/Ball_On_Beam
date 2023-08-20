@@ -7,10 +7,11 @@
 --------------------
 ## Directory tree 
 ``` bash
-Ball_On_Beam
+└───Ball_On_Beam
     ├───Documents
     │   ├───Figures
     │   └───Files
+    │       └───System Dynamics
     └───Simulation
     
 ```
