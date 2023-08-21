@@ -11,6 +11,7 @@
     ├───Documents
     │   ├───Figures
     │   └───Files
+    │       ├───Hardware
     │       └───System Dynamics
     └───Simulation
     
