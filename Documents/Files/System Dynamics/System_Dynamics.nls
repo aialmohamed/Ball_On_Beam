@@ -1,0 +1,19 @@
+
+\begin{thenomenclature} 
+\nomgroup{A}
+  \item [{$\omega$}]\begingroup angular velocity of the ball\nomeqref {6}\nompageref{5}
+  \item [{$\omega_{\text{Beam}}$}]\begingroup Beam's angular velocity\nomeqref {8}\nompageref{6}
+  \item [{$\phi$}]\begingroup Gear angle\nomeqref {0}\nompageref{4}
+  \item [{$\tau$}]\begingroup External torque applied to the beam\nomeqref {0}\nompageref{4}
+  \item [{$\theta$}]\begingroup Tilt angle of the beam\nomeqref {0}\nompageref{4}
+  \item [{$d$}]\begingroup Distance from the motor's rotor to the gear arm\nomeqref {0}\nompageref{4}
+  \item [{$h$}]\begingroup Height of the ball\nomeqref {6}\nompageref{5}
+  \item [{$I_{\text{ball}}$}]\begingroup Moment of inertia of the ball\nomeqref {6}\nompageref{5}
+  \item [{$I_{\text{Beam}}$}]\begingroup Moment of inertia of the Beam\nomeqref {8}\nompageref{6}
+  \item [{$l$}]\begingroup Length of the beam\nomeqref {0}\nompageref{4}
+  \item [{$m_{\text{ball}}$}]\begingroup Mass of the ball\nomeqref {6}\nompageref{5}
+  \item [{$p$}]\begingroup Position of the ball on the beam\nomeqref {0}\nompageref{4}
+  \item [{$r$}]\begingroup Ball's radius\nomeqref {0}\nompageref{4}
+  \item [{$v$}]\begingroup Ball's velocity on the beam\nomeqref {8}\nompageref{6}
+
+\end{thenomenclature}
