@@ -5,10 +5,10 @@
 \nomenclatureentry{a$\theta$@[{$\theta$}]\begingroup Tilt angle of the beam\nomeqref {0}|nompageref}{4}
 \nomenclatureentry{a$r$@[{$r$}]\begingroup Ball's radius\nomeqref {0}|nompageref}{4}
 \nomenclatureentry{a$\tau$@[{$\tau$}]\begingroup External torque applied to the beam\nomeqref {0}|nompageref}{4}
-\nomenclatureentry{a$m_{\text{ball}}$@[{$m_{\text{ball}}$}]\begingroup Mass of the ball\nomeqref {6}|nompageref}{5}
-\nomenclatureentry{a$\omega$@[{$\omega$}]\begingroup angular velocity of the ball\nomeqref {6}|nompageref}{5}
-\nomenclatureentry{a$I_{\text{ball}}$@[{$I_{\text{ball}}$}]\begingroup Moment of inertia of the ball\nomeqref {6}|nompageref}{5}
-\nomenclatureentry{a$h$@[{$h$}]\begingroup Height of the ball\nomeqref {6}|nompageref}{5}
-\nomenclatureentry{a$I_{\text{Beam}}$@[{$I_{\text{Beam}}$}]\begingroup Moment of inertia of the Beam\nomeqref {8}|nompageref}{6}
-\nomenclatureentry{a$v$@[{$v$}]\begingroup Ball's velocity on the beam\nomeqref {8}|nompageref}{6}
-\nomenclatureentry{a$\omega_{\text{Beam}}$@[{$\omega_{\text{Beam}}$}]\begingroup Beam's angular velocity\nomeqref {8}|nompageref}{6}
+\nomenclatureentry{a$m_{\text{ball}}$@[{$m_{\text{ball}}$}]\begingroup Mass of the ball\nomeqref {12}|nompageref}{9}
+\nomenclatureentry{a$\omega$@[{$\omega$}]\begingroup angular velocity of the ball\nomeqref {12}|nompageref}{9}
+\nomenclatureentry{a$I_{\text{ball}}$@[{$I_{\text{ball}}$}]\begingroup Moment of inertia of the ball\nomeqref {12}|nompageref}{9}
+\nomenclatureentry{a$h$@[{$h$}]\begingroup Height of the ball\nomeqref {12}|nompageref}{9}
+\nomenclatureentry{a$I_{\text{Beam}}$@[{$I_{\text{Beam}}$}]\begingroup Moment of inertia of the Beam\nomeqref {14}|nompageref}{10}
+\nomenclatureentry{a$v$@[{$v$}]\begingroup Ball's velocity on the beam\nomeqref {14}|nompageref}{10}
+\nomenclatureentry{a$\omega_{\text{Beam}}$@[{$\omega_{\text{Beam}}$}]\begingroup Beam's angular velocity\nomeqref {14}|nompageref}{10}
