@@ -1,0 +1,159 @@
+\chapter{System Model}
+Considering the system with it variable ,we can tell that the system is no a linear system due to the trigonometrical and quadratic terms in the equations.
+This means that we need to linearize the system around a point called the equilibrium.
+In order to do that we need first to define the state-space variable.
+\begin{equation}
+	\vec{x} =
+	\begin{bmatrix}
+		x_1 \\
+		x_2 \\
+		x_3 \\
+		x_4 \\
+	\end{bmatrix}=
+	\begin{bmatrix}
+		p \\
+		p' \\
+		\theta \\
+		\theta '
+	\end{bmatrix}
+\end{equation}
+Also the input torque will be renamed :
+\begin{equation}
+	\begin{split}
+		\tau = u
+	\end{split}
+\end{equation}
+Before we transform the system in terms of $\vec{x}$ and $u$ we also need to define the output of the system which will be the ball's position in this case .
+\begin{equation}
+	\begin{split}
+		\vec{y} = p = x_1
+	\end{split}
+\end{equation}
+Now we can rewrite the equations of motion into state-space terms.
+From the first Lagrangian equation \eqref{LEM first}
+\begin{equation}
+	\begin{split}
+		m_{\text{ball}}.\dot{x_2} -  m_{\text{ball}}.x_1.x_4^2 + m_{\text{ball}}.g.\sin{x_3} = 0 \\
+		\dot{x_2} =  g.\sin{x_3} - x_1.x_4^2 
+	\end{split}
+\end{equation}
+And from the second Lagrangian equation \eqref{LEM second}
+\begin{equation}
+	\begin{split}
+		2.m_{\text{ball}}.x_1.x_2.x_4 + \dot{x_4}.(I_{\text{Bea,}} + m_{\text{ball}} x_1^2) + m_{\text{ball}}.g.x_1.\cos{x_3}  = u \\
+		\dot{x_4} = (\dfrac{1}{(I_{\text{Beam}} + m_{\text{ball}} x_1^2)} ). (u - m_{\text{ball}}.g.x_1.\cos{x_3} - 2.m_{\text{ball}}.x_1.x_2.x_4 )
+	\end{split}
+\end{equation} 
+Now the vector $\vec{x}$ holds all the system variables in itself and we can rewrite the Lagrangian equations with it.
+
+\begin{equation}
+	\vec{\dot{x}} =
+	\begin{bmatrix}
+		\dot{x_1} \\
+		\dot{x_2} \\
+		\dot{x_3} \\
+		\dot{x_4} \\
+	\end{bmatrix} =
+	\begin{bmatrix}
+		x_2\\
+		g.\sin{x_3} - x_1.x_4^2 \\
+		x_4\\
+		-\dfrac{m_{\text{ball}}.g.x_1.\cos{x_3} + 2.m_{\text{ball}}.x_1.x_2.x_4}{(I_{\text{Beam} } + m_{\text{ball}} x_1^2)}
+	\end{bmatrix}+
+	\begin{bmatrix}
+		0 \\
+		0\\
+		0\\
+		\dfrac{1}{(I_{\text{Beam}} + m_{\text{ball}} x_1^2)}
+	\end{bmatrix}*u
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Linearization of the State-Space %%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\subsection{Linearization of the State-Space}
+In order to set the equilibrium point(s) we must be careful about the $x_1$ which represent the position (here :initial) of the ball.
+Setting this initial value to 0 will cause the equations to draft to infinity ,which is not possible.
+This means that we need to chose an equilibrium where all the other values except $x_1$ is set to zero, while $x_1$ is set $x_{\text{eq}}$.
+In other word , The Ball has no initial velocity , the beam's angle is zero and has no angular velocity but the ball is positioned at $x_{\text{eq}}$ unit of measurement.
+where $x_{\text{eq}} \epsilon R\backslash\{0\}$ :
+
+\begin{equation}
+	\vec{x_*} =
+	\begin{bmatrix}
+		x_{\text{$1_*$}} \\
+		x_{\text{$2_*$}} \\
+		x_{\text{$3_*$}} \\
+		x_{\text{$4_*$}}
+	\end{bmatrix}=
+	\begin{bmatrix}
+		x_{\text{eq}}\\
+		0 \\
+		0 \\
+		0 \\
+	\end{bmatrix}
+\end{equation}
+We need also to find equilibrium point of the External torque $u$ which we will to some torque $T$.
+
+\begin{equation}
+	\begin{split}
+		u_* = T
+	\end{split}
+\end{equation}
+Further to do, is to find the jacobian matrix around the equilibrium point(s) ,by doing this we will reach a linearized state-space model of the system,
+which we can test ,simulate and find more about the project before we start the implementation.
+Also to reach the normal form of the State-space which is :
+
+\begin{equation}
+	\begin{split}
+		\vec{\dot{x}} = A*\vec{x} + B*\vec{u};\\
+		\vec{y}  = C*\vec{x} + D*\vec{u}
+	\end{split}
+\end{equation}
+The jacobian will give us the linearized matrices $\Delta A$,$\Delta B$,$\Delta C$ and $\Delta D$.
+\begin{equation}
+	\begin{split}
+		\Delta A = \pd{\vec{\dot{x}}}{\vec{x}}\|x_*,u_*\\
+		\Delta B = \pd{\vec{\dot{x}}}{\vec{u}}\|x_*,u_*\\
+		\Delta C = \pd{\vec{y}}{\vec{x}}\|x_*,u_* \\
+		\Delta D = \pd{\vec{y}}{\vec{u}}\|x_*,u_*
+	\end{split}
+\end{equation}
+Now we need to find the value of these matrices.
+Starting with $\Delta A$ evaluating it at $\vec{x_*}$ and $u_*$
+\begin{equation}
+	\Delta A =
+	\begin{bmatrix}
+		0 &1 &0 &0\\
+		0 &0 & g &0\\
+		0 &0 &0 &1 \\
+		\gamma_1 & 0 & 0 & 0
+	\end{bmatrix}
+\end{equation}
+Where $\gamma_1 = \dfrac{g.m_{\text{ball}}^2.x_{\text{eq}}^2 + 2.T.x_{\text{eq}}- I_{\text{Beam}}.g}{(m_{\text{ball}}.x_{\text{eq}}^2 + I_{\text{Beam}})^2}$
+\newpage
+Then $\Delta B$ is :
+
+\begin{equation}
+	\Delta B =
+	\begin{bmatrix}
+		0 \\
+		0 \\
+		0 \\
+		\gamma_2
+	\end{bmatrix}
+\end{equation}
+Where $ \gamma_2 = - \dfrac{1}{m_{\text{ball}}.x_{\text{eq}}^2 + I_{\text{Beam}}}$
+
+To Get $\Delta C $
+\begin{equation}
+	\Delta C =
+	\begin{bmatrix}
+		1 & 0 & 0 & 0
+	\end{bmatrix}
+\end{equation}
+And when calculate $\Delta D $ ,,we found that simply it is zero ,because there is no $u$ term in the $\vec{y}$ equation.
+Therefore :
+\begin{equation}
+	\begin{split}
+		\Delta D = 0
+	\end{split}
+\end{equation}
