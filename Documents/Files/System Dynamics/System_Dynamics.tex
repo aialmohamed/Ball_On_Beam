@@ -146,8 +146,31 @@ Now simply by taking the derivative of that we can calculate the angular velocit
 		\omega = \dot{\alpha} = \dot{\theta} - \dfrac{\dot{p}}{r}
 	\end{split}
 \end{equation}
+
+Also the Moment of inertia of the ball is : 
+\begin{equation}
+	\begin{split}
+		I_{\text{ball}} = \dfrac{2}{5}.m_{\text{ball}}.r^2
+	\end{split}
+\end{equation}
 \newpage
 \subsection{Beam Geometry}
+The most important thing is to consider that the beam height is a changeable variable according to $\theta$.
+The beam height sets in a relation to the total potential energy of the system which will be needed to get the system model.
+Normally the beam \figref{Beam_System_Geo} sets at a height of $h$ ,but when tilted , it changes according to the $\cos{\theta}$.
+Therefore:
+\begin{equation}
+	\begin{split}
+		h = N.\cos{\theta}
+	\end{split}
+\end{equation}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height = 4cm,width =8cm]{Beam_System_Geo}
+	\caption{Beam geometry}\label{Beam_System_Geo}
+\end{figure}
+
+\noindent Finally its important to say ,that there are more geometry to be done on the system , but for the peropus of this study we will ignore them in order to simplify the system.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%MATH MODEL%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
@@ -196,7 +219,7 @@ Now we need to calculate the ball's potential energy,
 But because of the tilted beam we can describe the potential energy with :
 \begin{equation}
 	\begin{split}\label{potential}
-		E_{\text{potential}} = m_{\text{ball}}.g.p.\sin{\theta}
+		E_{\text{potential}} = m_{\text{ball}}.g.(p.\sin{\theta} + r.\cos{\theta}.\sin{\theta})
 	\end{split}
 \end{equation}
 
@@ -204,7 +227,7 @@ But because of the tilted beam we can describe the potential energy with :
 \nomenclature{$m_{\text{ball}}$}{Mass of the ball}
 \nomenclature{$\omega$}{angular velocity of the ball}
 \nomenclature{$I_{\text{ball}}$}{Moment of inertia of the ball}
-\nomenclature{$h$}{Height of the ball}
+\nomenclature{$h$}{Height of the Beam}
 
 \newpage
 \subsection{Beam Energy}
@@ -216,19 +239,12 @@ middle.
 		E_{\text{kineticBeam}} = \frac{1}{2}.I_{\text{Beam}}.\omega_{\text{Beam}}^2
 	\end{split}	
 \end{equation}
-\noindent The beam is fixed at a vertical height and is rotating around a pivot point 
-in the middle, the potential energy of the beam itself can often be ignored.
-The potential energy of the beam is typically negligible in comparison to other energy terms
-involved in the system,
-especially if the vertical height remains constant.
-The potential energy of the beam arises due to its tilt angle and vertical height, 
-but if the height is fixed and the tilt angle doesn't significantly affect 
-the beam's position relative to the fixed height, 
-the potential energy term for the beam can often be omitted from the Lagrangian.
-Therefore:
+\noindent The beam has also a potential energy due to setting the beam at a height $h$.
+
 \begin{equation}
 	\begin{split}
-		E_{\text{potBeam}} = 0
+		E_{\text{potBeam}} = M_{\text{Beam}}.g.h \\
+		E_{\text{potBeam}} = M_{\text{Beam}}.g.N.\cos{\theta}
 	\end{split}
 \end{equation}
 
@@ -236,68 +252,48 @@ Therefore:
 \nomenclature{$I_{\text{Beam}}$}{Moment of inertia of the Beam}
 \nomenclature{$v$}{Ball's velocity on the beam}
 \nomenclature{$\omega_{\text{Beam}}$}{Beam's angular velocity}
+\nomenclature{$ M_{\text{Beam}}$}{Beam's mass}
+\nomenclature{$N$}{Beam's height without tilting}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Lagrangian Dynamics%%%%%%%%%%%%%%%%%
 \subsection{Lagrangian Dynamics}
 Until this point we are using the term $p$ to describe the distance of the ball on the beam.
-$p$ is the polar description of the position ,which we can change into Cartesian coordinates with:
-
-\begin{equation}
-	\begin{split}
-		y = p.\sin{\theta}\\
-		x = p.\cos{\theta}
-	\end{split}
-\end{equation}
-This is why the potential energy is given in terms of $p$ and $\theta$ but in realty it is in terms of $y$.
-The same is applies to the velocity $v$ which is the ball's velocity on the beam in realty its a two direction on vertical and one horizontal.
-That means we can describe the velocity term $v^2$ in terms of $p$ and $\theta$
+$p$ is the polar description of the position ,which we can change into Cartesian coordinates using equation (3),(4).
+With substituting (4) in (10)
 \begin{equation}\label{velocity}
 	\begin{split}
-		v^2 = x'^2 + y'^2 
+		E_{\text{trans}} = \frac{1}{2}.m_{\text{ball}}.((\dot{p}.\cos{\theta}-p.\theta'.\sin{\theta} - r.\theta'.\sin{\theta})^2 + \\
+		(\dot{p}.\sin{\theta}+ p.\theta'\cos{\theta} - r.\theta'.\sin{\theta}) )^2
 	\end{split}
 \end{equation}
-Where :
+On the other hand we can also substitute the term $\omega$ from (6) in (11):
 \begin{equation}
 	\begin{split}
-		x' = p.'\cos{\theta} - p.\theta'.\sin{\theta}\\
-		x'^2 = p'^2.\cos^2{\theta} - 2.p.p'\theta'.\cos{\theta}.\sin{\theta}+ p^2.\theta'^2.\sin^2{\theta}
-	\end{split}
-\end{equation}
-And :
-\begin{equation}
-	\begin{split}
-		y'= p'.\sin{\theta}+p.\theta'.\cos{\theta} \\
-		y'^2 = p'^2.\sin^2{\theta}+ 2p.p'\theta'.\cos{\theta}.\sin{\theta}+p^2.\theta'^2.\cos^2{\theta}
-	\end{split}
-\end{equation}
-Now we substitute back to \ref{velocity}:
-\begin{equation}
-	\begin{split}
-		v'^2 = p' + p^2.\theta'^2
-	\end{split}
-\end{equation}
-On the other hand we can also substitute the term $\omega$ into coordinates terms $p$ and the ball radius $r$:
-\begin{equation}
-	\begin{split}
-		\omega = \frac{p}{r}
+		E_{\text{rot}} = \dfrac{1}{2}.I_{\text{ball}}.(\dot{\theta} - \dfrac{\dot{p}}{r})^2
 	\end{split}
 \end{equation}
 We can plug this back to \ref{kineticBall} so we can describe the kinetic energy of the ball in term of $p$ and $\theta$:
 \begin{equation}
 	\begin{aligned}
-		E_{\text{kineticBall}} = \frac{1}{2}.m_{\text{ball}}.(p' + p^2.\theta'^2) + \frac{1}{2}.I_{\text{ball}}.\frac{p^2}{r^2}\\
-		= \frac{1}{2}.(\frac{I_{\text{ball}}}{r^2}+m_{\text{ball}}).p'^2 + \frac{1}{2} m_{\text{ball}}.p^2.\theta'^2
+		E_{\text{kineticBall}} = \frac{1}{2}.m_{\text{ball}}.((\dot{p}.\cos{\theta}-p.\theta'.\sin{\theta} - r.\theta'.\sin{\theta})^2 + \\
+		(\dot{p}.\sin{\theta}+ p.\theta'\cos{\theta} - r.\theta'.\sin{\theta}) )^2 + \\
+		\dfrac{1}{2}.I_{\text{ball}}.(\dot{\theta} - \dfrac{\dot{p}}{r})^2
 	\end{aligned}
 \end{equation}
 After defining the main kinetic and potential energy of the system we can set the 
 equations into the Lagrangian \ref{Lagrangian} .
 \begin{multline}
-		L = \frac{1}{2}.(\frac{I_{\text{ball}}}{r^2}+m_{\text{ball}}).p'^2 + \frac{1}{2} m_{\text{ball}}.p^2.\theta'^2 +\\
-		\frac{1}{2}.I_{\text{Beam}}.\omega_{\text{Beam}}^2- m_{\text{ball}}.g.p.\sin{\theta}
+		L =  \frac{1}{2}.m_{\text{ball}}.((\dot{p}.\cos{\theta}-p.\theta'.\sin{\theta} - r.\theta'.\sin{\theta})^2 + \\
+		(\dot{p}.\sin{\theta}+ p.\theta'\cos{\theta} - r.\theta'.\sin{\theta}) )^2 + \\
+		\dfrac{1}{2}.I_{\text{ball}}.(\dot{\theta} - \dfrac{\dot{p}}{r})^2 + \frac{1}{2}.I_{\text{Beam}}.\theta'^2 - \\
+		m_{\text{ball}}.g.(p.\sin{\theta} + r.\cos{\theta}.\sin{\theta})-M_{\text{Beam}}.g.N.\cos{\theta}
 \end{multline}
-We simplify it to :
+Now this system is really complicated and driving the equations of motion is going to be hard and long ,so we can make handful of assumptions.
+One of these assumptions is ,that the ball-beam system is considered to be a mass-point system which means that the ball has a radius of zero , the beam has zero moment of inertia and the term of the
+beam's potential energy is neglected.
+This lead to the following Lagrangian:
 \begin{equation}
 	\begin{split}
-		L = \frac{1}{2}.(\frac{I_{\text{ball}}}{r^2}+m_{\text{Beam}}).p'^2 + \frac{1}{2}(m_{\text{ball}}.p^2 + I_{\text{Beam}}).\theta'^2 - m_{\text{ball}}.g.p.\sin{\theta} 
+		L = \dfrac{1}{2}.m_{\text{ball}}.\dot{p}^2 + \dfrac{1}{2}.m_{\text{ball}}.p^2.\dot{\theta}^2 + \dfrac{1}{2}.I_{\text{ball}}.\dot{\theta}^2 - m_{\text{ball}}.g.p.\sin{\theta}
 	\end{split}
 \end{equation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%% Lagrangian equations of Motion %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -321,38 +317,38 @@ And :
 Now solving for \ref{LEM first}
 \begin{equation}
 	\begin{split}
-		\pd{L}{p'} = 2.\frac{1}{2}.(\frac{I_{\text{ball}}}{r^2}+m_{\text{ball}}).p'\\
-			= (\frac{I_{\text{ball}}}{r^2}+m_{\text{ball}}).p'
+	\pd{L}{p'} = 2 .\dfrac{1}{2}.m_{\text{ball}}.\dot{p} \\
+	=m_{\text{ball}}.\dot{p}
 	\end{split}	
 \end{equation}
 Then :
 \begin{equation}
 	\begin{split}
-		\od{}{t}(\pd{L}{p}) = (\frac{I_{\text{ball}}}{r^2}+m_{\text{ball}}).p''
+		\od{}{t}(\pd{L}{p}) = m_{\text{ball}}.\ddot{p}
 	\end{split}
 \end{equation}
 And the other term :
 \begin{equation}
 	\begin{split}
-	\pd{L}{p} = m_{\text{ball}}.p.\theta'^2 - m_{\text{ball}}.g.\sin{\theta}
+	\pd{L}{p} = m_{\text{ball}}.p.\dot{\theta}^2 - m_{\text{ball}}.g.\sin{\theta}
 	\end{split}
 \end{equation}
 Thus the result of the first Lagrangian equation :
 \begin{equation}
 	\begin{split}
-		(\frac{I_{\text{ball}}}{r^2}+m_{\text{ball}}).p'' +  m_{\text{ball}}.p.\theta'^2 - m_{\text{ball}}.g.\sin{\theta} = 0
+		m_{\text{ball}}.\ddot{p} -  m_{\text{ball}}.p.\dot{\theta}^2 + m_{\text{ball}}.g.\sin{\theta} = 0
 	\end{split}
 \end{equation}
 Next we solve the second equation \ref{LEM second}:
 \begin{equation}
 	\begin{split}
-		\pd{L}{\theta'} = (m_{\text{ball}}.p^2 + I_{\text{Beam}}).\theta'
+	\pd{L}{\theta'} = m_{\text{ball}}.p^2.\dot{\theta} + I_{\text{Ball}}.\dot{\theta}
 	\end{split}
 \end{equation}
 And : 
 \begin{equation}
 	\begin{split}
-		\od{}{t}(\pd{L}{\theta'}) = (m_{\text{ball}}.p^2 + I_{\text{Beam}}).\theta'' + 2.m_{\text{ball}}.p.p'.\theta'
+		\od{}{t}(\pd{L}{\theta'}) = 2.m_{\text{ball}}.p.\dot{p}.\dot{\theta} + \ddot{\theta}.(I_{\text{Ball}} + m_{\text{ball}} p^2)
 	\end{split}
 \end{equation}
 And the other term :
@@ -364,32 +360,16 @@ And the other term :
 Thus the the result of the second Lagrangian equation:
 \begin{equation}
 	\begin{split}
-		(m_{\text{ball}}.p^2 + I_{\text{Beam}}).\theta'' + 2.m_{\text{ball}}.p.p'.\theta' + m_{\text{ball}}.g.p.\cos{\theta} = \tau
+		2.m_{\text{ball}}.p.\dot{p}.\dot{\theta} + \ddot{\theta}.(I_{\text{Ball}} + m_{\text{ball}} p^2) + m_{\text{ball}}.g.p.\cos{\theta}  = \tau
 	\end{split}
 \end{equation}
 These two equations describe how the external torque effects the system as an input to the system, and how the distance $p$ and the angle $\theta$ are changed accordingly.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% State Space %%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-\section{State-Space Model}
-First, in order to build the State Space model of the system we need to simplify the constants terms of the system.
-This will be achieved by looking into the constants of the two Lagrangian equations and mash the constants into new constants.
-From the first Lagrangian equation :
-\begin{equation}
-	\begin{split}
-		(\frac{I_{\text{ball}}}{r^2}+m_{\text{ball}}) = \alpha \\
-		g.m_{\text{ball}} = \beta
-	\end{split}
-\end{equation}
-And from the second Lagrangian equation:
-\begin{equation}
-	\begin{split}
-		2.m_{\text{ball}} = \gamma \\
-	\end{split}
-\end{equation}
-What we really have in this system are two differential equations of second order with two variables $p$ and $\theta$.
-We can rewrite the system as four differential equations of first order.
-These two system are not linear due to the quadratic and trigonometrical terms in them, which means that the system needs to linearized around equilibrium point(s).
-Now we will rename the variables $p$ ,$p'$,$\theta$ and $\theta'$ into :
+\section{System model}
+Considering the system with it variable ,we can tell that the system is no a linear system due to the trigonometrical and quadratic terms in the equations.
+This means that we need to linearize the system around a point called the equilibrium.
+In order to do that we need first to define the state-space variable.
 \begin{equation}
 	\vec{x} =
 	\begin{bmatrix}
@@ -411,51 +391,59 @@ Also the input torque will be renamed :
 		\tau = u
 	\end{split}
 \end{equation}
-Now the vector $\vec{x}$ holds all the system variables in itself and we can rewrite the Lagrangian equations with it.
-
+Before we transform the system in terms of $\vec{x}$ and $u$ we also need to define the output of the system which will be the ball's position in this case .
 \begin{equation}
 	\begin{split}
-		\alpha.x_2' +  m_{\text{ball}}.x_1.x_4^2 - \beta.\sin{x_3} = 0 \\
-		(m_{\text{ball}}.x_1^2 + I_{\text{Beam}}).x_4' + \gamma.x_1.x_2.x_4 + \beta.x_1.\cos{x_3} = u
+		\vec{y} = p = x_1
 	\end{split}
 \end{equation}
-Now we will write a general form of the State Space :
+Now we can rewrite the equations of motion into state-space terms.
+From the first Lagrangian equation \eqref{LEM first}
+\begin{equation}
+	\begin{split}
+		m_{\text{ball}}.\dot{x_2} -  m_{\text{ball}}.x_1.x_4^2 + m_{\text{ball}}.g.\sin{x_3} = 0 \\
+		\dot{x_2} =  g.\sin{x_3} - x_1.x_4^2 
+	\end{split}
+\end{equation}
+And from the second Lagrangian equation \eqref{LEM second}
+\begin{equation}
+	\begin{split}
+		2.m_{\text{ball}}.x_1.x_2.x_4 + \dot{x_4}.(I_{\text{Ball}} + m_{\text{ball}} x_1^2) + m_{\text{ball}}.g.x_1.\cos{x_3}  = u \\
+		\dot{x_4} = (\dfrac{1}{(I_{\text{Ball}} + m_{\text{ball}} x_1^2)} ). (u - m_{\text{ball}}.g.x_1.\cos{x_3} - 2.m_{\text{ball}}.x_1.x_2.x_4 )
+	\end{split}
+\end{equation} 
+Now the vector $\vec{x}$ holds all the system variables in itself and we can rewrite the Lagrangian equations with it.
 
 \begin{equation}
 	\vec{\dot{x}} =
 	\begin{bmatrix}
-		x_1' \\
-		x_2' \\
-		x_3' \\
-		x_4' \\
+		\dot{x_1} \\
+		\dot{x_2} \\
+		\dot{x_3} \\
+		\dot{x_4} \\
 	\end{bmatrix} =
 	\begin{bmatrix}
 		x_2\\
-		\frac{ m_{\text{ball}}.x_1.x_4^2 - \beta.\sin{x_3}}{\alpha} \\
+		g.\sin{x_3} - x_1.x_4^2 \\
 		x_4\\
-		\frac{- \gamma.x_1.x_2.x_4 - \beta.x_1.\cos{x_3}}{(m_{\text{ball}}.x_1^2 + I_{\text{Beam}})}
+		-\dfrac{m_{\text{ball}}.g.x_1.\cos{x_3} + 2.m_{\text{ball}}.x_1.x_2.x_4}{(I_{\text{Ball} } + m_{\text{ball}} x_1^2)}
 	\end{bmatrix}+
 	\begin{bmatrix}
 		0 \\
 		0\\
 		0\\
-		\frac{1}{(m_{\text{ball}}.x_1^2 + I_{\text{Beam}})}
+		\dfrac{1}{(I_{\text{Ball}} + m_{\text{ball}} x_1^2)}
 	\end{bmatrix}*u
-\end{equation}
-Also the output of the system is a signal output which is the position of the ball at a time $t$.
-Therefore:
-\begin{equation}
-	\begin{split}
-		\vec{y} = x_1
-	\end{split}
 \end{equation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Linearization of the State-Space %%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \subsection{Linearization of the State-Space}
 In order to set the equilibrium point(s) we must be careful about the $x_1$ which represent the position (here :initial) of the ball.
 Setting this initial value to 0 will cause the equations to draft to infinity ,which is not possible.
-This means that we need to chose an equilibrium where all the other values except $x_1$ is set to zero, while $x_1$ is set 1.
-In other word , The Ball has no initial velocity , the beam's angle is zero and has no angular velocity but the ball is positioned at 1 unit of measurement.
+This means that we need to chose an equilibrium where all the other values except $x_1$ is set to zero, while $x_1$ is set $x_{\text{eq}}$.
+In other word , The Ball has no initial velocity , the beam's angle is zero and has no angular velocity but the ball is positioned at $x_{\text{eq}}$ unit of measurement.
+where $x_{\text{eq}} \epsilon R\backslash\{0\}$ :
+
 \begin{equation}
 	\vec{x_*} =
 	\begin{bmatrix}
@@ -465,17 +453,17 @@ In other word , The Ball has no initial velocity , the beam's angle is zero and 
 		x_{\text{$4_*$}}
 	\end{bmatrix}=
 	\begin{bmatrix}
-		1 \\
+		x_{\text{eq}}\\
 		0 \\
 		0 \\
 		0 \\
 	\end{bmatrix}
 \end{equation}
-We need also to find equilibrium point of the External torque $u$ which we will set also to zero.
+We need also to find equilibrium point of the External torque $u$ which we will to some torque $T$.
 
 \begin{equation}
 	\begin{split}
-		u_* = 0
+		u_* = T
 	\end{split}
 \end{equation}
 Further to do, is to find the jacobian matrix around the equilibrium point(s) ,by doing this we will reach a linearized state-space model of the system,
@@ -503,11 +491,12 @@ Starting with $\Delta A$ evaluating it at $\vec{x_*}$ and $u_*$
 	\Delta A =
 	\begin{bmatrix}
 		0 &1 &0 &0\\
-		0 &0 & -\frac{\beta}{alpha} &0\\
+		0 &0 & g &0\\
 		0 &0 &0 &1 \\
-		-\frac{\beta.(m_{\text{ball}} -I_{\text{Beam}} )}{(m_{\text{ball}}+I_\text{Beam})^2} & 0 & 0 & 0
+		\gamma_1 & 0 & 0 & 0
 	\end{bmatrix}
 \end{equation}
+Where $\gamma_1 = \dfrac{g.m_{\text{ball}}^2.x_{\text{eq}}^2 + 2.T.x_{\text{eq}}- I_{\text{Ball}}.g}{(m_{\text{ball}}.x_{\text{eq}}^2 + I_{\text{Ball}})^2}$
 \newpage
 Then $\Delta B$ is :
 
@@ -517,9 +506,11 @@ Then $\Delta B$ is :
 		0 \\
 		0 \\
 		0 \\
-		\dfrac{1}{m_{\text{ball}} +I_{\text{Beam}} }
+		\gamma_2
 	\end{bmatrix}
 \end{equation}
+Where $ \gamma_2 = - \dfrac{1}{m_{\text{ball}}.x_{\text{eq}}^2 + I_{\text{Ball}}}$
+
 To Get $\Delta C $
 \begin{equation}
 	\Delta C =
@@ -534,8 +525,9 @@ Therefore :
 		\Delta D = 0
 	\end{split}
 \end{equation}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Gear and External Torque %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-\section{Stability}
+\section{Gear and External Torque}
+
 
 \end{document}
